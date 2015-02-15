@@ -10,8 +10,11 @@
 var eventid = window.location.href.match(/kktix.com\/events\/([^\/]+)\//)[1];
 var ticketid;
 var quantity;
+var pushperproc = 50;
 
 var go = function() {
+  pushperproc = parseInt(prompt('並行推倒線程數，請不要設太大的值', '50'));
+  if(pushperproc <= 0) pushperproc = 1;
   $.getJSON('/g/events/' + eventid + '/base_info', function(data) {
     var tickets = data.eventData.tickets;
     for(i in tickets) {
@@ -24,7 +27,9 @@ var go = function() {
       $('.pushkktix').addClass('btn-disabled-alt');
       ticketid = $(this).attr('data-ticketid');
       quantity = $('#ticket_' + ticketid + ' .ticket-select select').val();
-      pushDown();
+      for(i = 1; i <= pushperproc; i++) {
+        pushDown();
+      }
     });
   });
 }
