@@ -30,8 +30,7 @@ var go = function() {
 }
   
 var showBtn = function(ticketid, name, max_to_buy) {
-  $("#ticket_" + ticketid + " .ticket-title").html('<button data-ticketid="' + ticketid + '" 
-data-ticketname="' + name + '" class="pushkktix btn btn-primary">推倒 ' + name + '</button>');
+  $("#ticket_" + ticketid + " .ticket-title").html('<button data-ticketid="' + ticketid + '" data-ticketname="' + name + '" class="pushkktix btn btn-primary">推倒 ' + name + '</button>');
 
   shtml = '<select type="number">';
   for(i = 0; i <= max_to_buy; i++)
